@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Drowsiness Detector</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <h1>كشف النوم (إغلاق العينين)</h1>
+  <div class="video-container">
+    <video id="video" autoplay playsinline width="640" height="480"></video>
+    <canvas id="canvas" width="640" height="480" style="display:none;"></canvas>
+    <div id="alert" class="alert"></div>
+    <audio id="alarm" src="/class_audio/output_audio.mp3" preload="auto"></audio>
+  </div>
+  <script src="/static/script.js"></script>
+</body>
+</html>
