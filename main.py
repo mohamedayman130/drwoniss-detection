@@ -21,7 +21,6 @@ app.add_middleware(
 mp_face_mesh = mp.solutions.face_mesh
 face_mesh = mp_face_mesh.FaceMesh(static_image_mode=True, max_num_faces=1, refine_landmarks=True)
 
-# نقاط العين اليسرى واليمنى حسب MediaPipe FaceMesh
 LEFT_EYE_IDX = [33, 160, 158, 133, 153, 144]
 RIGHT_EYE_IDX = [362, 385, 387, 263, 373, 380]
 
@@ -58,20 +57,3 @@ def detect_drowsiness(file: UploadFile = File(...)):
             if ear < EYE_AR_THRESH:
                 drowsy = True
     return {"drowsy": drowsy}
-
-if __name__ == '__main__':
-    import uvicorn
-    import os
-    ssl_keyfile = 'key.pem'
-    ssl_certfile = 'cert.pem'
-    if os.path.exists(ssl_keyfile) and os.path.exists(ssl_certfile):
-        uvicorn.run(
-            'main:app',
-            host='0.0.0.0',
-            port=8000,
-            reload=True,
-            ssl_keyfile=ssl_keyfile,
-            ssl_certfile=ssl_certfile
-        )
-    else:
-        uvicorn.run('main:app', host='0.0.0.0', port=8000, reload=True) 
